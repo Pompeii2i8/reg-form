@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data Display</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles_bootstrap.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5 mb-4">Form Data</h1>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+            <tr>
+                <th scope="row">Last Name</th>
+                <td><?php echo htmlspecialchars($_POST['lastName']); ?></td>
+            </tr>
+            <tr>
+                <th scope="row">First Name</th>
+                <td><?php echo htmlspecialchars($_POST['firstName']); ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Email</th>
+                <td><?php echo htmlspecialchars($_POST['email']); ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Phone Number</th>
+                <td><?php echo htmlspecialchars($_POST['phoneNumber']); ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Message</th>
+                <td><?php echo nl2br(htmlspecialchars($_POST['message'])); ?></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

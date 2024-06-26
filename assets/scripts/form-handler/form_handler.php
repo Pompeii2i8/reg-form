@@ -11,7 +11,7 @@ if (
     !isset($_POST['email']) ||
     !isset($_POST['phoneNumber'])
 ) {
-    die('One or more required fields are not set.');
+    die();
 }
 
 $lastName = htmlspecialchars($_POST['lastName']);
@@ -20,14 +20,12 @@ $email = htmlspecialchars($_POST['email']);
 $phoneNumber = htmlspecialchars($_POST['phoneNumber']);
 $message = htmlspecialchars($_POST['message']);
 
-// Saving data to CSV file
 $file = $_SERVER['DOCUMENT_ROOT'] . '/assets/storage/data/form_data.csv';
 $fileHandle = fopen($file, 'a');
 $data = [$lastName, $firstName, $email, $phoneNumber, $message];
 fputcsv($fileHandle, $data);
 fclose($fileHandle);
 
-// Store data in session for displaying in new window/tab
 $_SESSION['formData'] = [
     'lastName' => $lastName,
     'firstName' => $firstName,
@@ -35,6 +33,9 @@ $_SESSION['formData'] = [
     'phoneNumber' => $phoneNumber,
     'message' => $message
 ];
+
+
+header('Location: form.html?success=true');
 
 header("Location: display.php");
 exit();

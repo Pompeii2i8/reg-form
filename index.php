@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/styles_bootstrap.css" />
 </head>
 <body>
+
 <div class="container">
     <div>
         <h1 class="text-center mb-1 title">Get in touch</h1>
@@ -45,9 +46,6 @@
                         <textarea class="form-control" id="message" rows="3" name="message" placeholder="Message"></textarea>
                     </div>
                     <button type="submit" class="btn btn-custom btn-block">Send it to the moon 🚀</button>
-                    <div id="success-message" class="alert alert-success" style="display: none;">
-                        Form submitted successfully!
-                    </div>
                 </form>
             </div>
         </div>

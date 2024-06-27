@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+$success_message = '';
+
+if (isset($_SESSION['success']) && $_SESSION['success'] === true) {
+    $success_message = "<p>Действие успешно выполнено!</p>";
+    unset($_SESSION['success']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +26,7 @@
         <h1 class="text-center mb-1 title">Get in touch</h1>
         <p class="text-center mb-5 subtitle">Reach out, and let's create a universe of possibilities together!</p>
     </div>
+
     <div class="row main">
         <div class="col-md-6">
             <div class="form-info-text">
@@ -22,7 +34,7 @@
                 <p>Let's align our constellations! Reach out and let the magic of collaboration illuminate our skies.</p>
             </div>
             <div class="form-container">
-                <form action="assets/scripts/form-handler/form_handler.php" method="POST" target="_blank">
+                <form action="assets/controllers/form-handler/form_handler.php" method="POST">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="lastName"></label>
@@ -39,18 +51,20 @@
                     </div>
                     <div class="form-group">
                         <label for="phoneNumber"></label>
-                        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+                        <input type="tel" class="form-control is-valid" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
                     </div>
                     <div class="form-group">
                         <label for="message"></label>
                         <textarea class="form-control" id="message" rows="3" name="message" placeholder="Message"></textarea>
+                        <div class="valid-feedback">Great</div>
                     </div>
                     <button type="submit" class="btn btn-custom btn-block">Send it to the moon 🚀</button>
+                    <span style="color=white;"><?php echo $success_message; ?></span>
                 </form>
             </div>
         </div>
         <div class="col-md-6 image-container">
-            <img src="assets/storage/images/cosmo.png" alt="Astronaut">
+            <img src="assets/images/cosmo.png" alt="Astronaut">
         </div>
     </div>
 </div>

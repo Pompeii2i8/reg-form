@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+$_SESSION['success'] = true;
+
+header("Location: /../index.php");
+
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     die();
 }
@@ -20,22 +24,19 @@ $email = htmlspecialchars($_POST['email']);
 $phoneNumber = htmlspecialchars($_POST['phoneNumber']);
 $message = htmlspecialchars($_POST['message']);
 
-$file = $_SERVER['DOCUMENT_ROOT'] . '/assets/storage/data/form_data.csv';
-$fileHandle = fopen($file, 'a');
+$headers = ['Last Name', 'First Name', 'Email', 'Phone Number', 'Message'];
 $data = [$lastName, $firstName, $email, $phoneNumber, $message];
+
+$file = $_SERVER['DOCUMENT_ROOT'] . '/assets/storage/data/form_data.csv';
+
+if (!file_exists($file)) {
+    $fileHandle = fopen($file, 'w');
+    fputcsv($fileHandle, $headers);
+} else {
+    $fileHandle = fopen($file, 'a');
+}
+
 fputcsv($fileHandle, $data);
 fclose($fileHandle);
 
-$_SESSION['formData'] = [
-    'lastName' => $lastName,
-    'firstName' => $firstName,
-    'email' => $email,
-    'phoneNumber' => $phoneNumber,
-    'message' => $message
-];
-
-
-header('Location: form.html?success=true');
-
-header("Location: display.php");
-exit();
+exit;

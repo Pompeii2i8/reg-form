@@ -51,7 +51,7 @@ if (isset($_SESSION['success']) && $_SESSION['success'] === true) {
                     </div>
                     <div class="form-group">
                         <label for="phoneNumber"></label>
-                        <input type="tel" class="form-control is-valid" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+                        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
                     </div>
                     <div class="form-group">
                         <label for="message"></label>
@@ -60,6 +60,9 @@ if (isset($_SESSION['success']) && $_SESSION['success'] === true) {
                     </div>
                     <button type="submit" class="btn btn-custom btn-block">Send it to the moon 🚀</button>
                     <span style="color=white;"><?php echo $success_message; ?></span>
+                    <div>
+                        <a href="assets/controllers/admin_panel.php" class="btn btn-custom btn-block" style="margin-top: 50px">Перейти на другой URL</a>
+                    </div>
                 </form>
             </div>
         </div>
